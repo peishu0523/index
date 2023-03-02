@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>抽籤網頁</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      button {
+        display: block;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #result {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      #item-list {
+        margin-top: 20px;
+      }
+
+      #item-list input[type="text"] {
+        display: block;
+        margin: 0 auto;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      #item-list button {
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>抽籤網頁</h1>
+    <button onclick="draw()">抽籤</button>
+    <div id="result"></div>
+    <div id="item-list">
+      <input type="text" id="new-item">
+      <button onclick="addItem()">新增抽籤</button>
+    </div>
+    <script>
+      var items = [
+        "籤詩一",
+        "籤詩二",
+        "籤詩三",
+        "籤詩四",
+        "籤詩五"
+      ];
+
+      function draw() {
+        var randomIndex = Math.floor(Math.random() * items.length);
+
+        var resultElement = document.getElementById("result");
+        resultElement.innerHTML = items[randomIndex];
+      }
+
+      function addItem() {
+        var newItemInput = document.getElementById("new-item");
+        var newItemValue = newItemInput.value;
+        if (newItemValue !== "") {
+          items.push(newItemValue);
+          newItemInput.value = "";
+          alert("已新增抽籤：" + newItemValue);
+        }
+      }
+    </script>
+  </body>
+</html>
